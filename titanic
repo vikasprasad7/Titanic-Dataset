@@ -87,7 +87,6 @@ accuracy = clf.score(X_test, y_test)
 print(f'Accuracy: {accuracy:.2f}')
 Accuracy: 0.70
 from sklearn.ensemble import RandomForestClassifier
-
 X = df[['Pclass', 'Age', 'SibSp', 'Sex', 'Parch', 'Fare', 'Embarked','Family Size','EmFam','EmFamMi','PcEmb','PcEmbMi','PcEmbMu','EP']]
 y = df['Survived']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
