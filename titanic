@@ -15,6 +15,7 @@ df['Sex'] = df['Sex'].map(sex_class)
 embarked = {'S':1,'C':2,'Q':3}
 df['Embarked'] = df['Embarked'].map(embarked)
 df.head()
+
 #Logistic Regression
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
@@ -27,6 +28,7 @@ y_pred = log_reg.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f'Accuracy: {accuracy:.2f}')
 Accuracy: 0.81
+
 #Naive Bayes
 from sklearn.naive_bayes import GaussianNB, MultinomialNB, BernoulliNB
 from sklearn.metrics import accuracy_score
@@ -41,6 +43,7 @@ y_pred = gnb.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f'Accuracy: {accuracy:.2f}')
 Accuracy: 0.74
+
 #MultinomialNB
 X = df[['Pclass', 'Age','SibSp','Sex','Parch','Fare','Embarked','Family Size']]#Negative Values not accepted
 y = df['Survived']
@@ -51,6 +54,7 @@ y_pred = mnb.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f'Accuracy: {accuracy:.2f}')
 Accuracy: 0.68
+
 BernoulliNB
 X = df[['Pclass', 'Age','SibSp','Sex','Parch','Fare','Embarked','Family Size','EmFam','EmFamMi','PcEmb','PcEmbMi','PcEmbMu','EP']]
 y = df['Survived']
@@ -61,6 +65,7 @@ y_pred = bnb.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f'Accuracy: {accuracy:.2f}')
 Accuracy: 0.69
+
 #SVC
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
@@ -73,11 +78,12 @@ y_pred = svc.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f'Accuracy: {accuracy:.2f}')
 Accuracy: 0.73
+
 #Decision Tree Classifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn import tree
 import matplotlib.pyplot as plt
-X = df[['Pclass','Age','SibSp','Sex','Parch','Fare','Embarked','Family Size','EmFam','EmFamMi','PcEmb','PcEmbMi','PcEmbMu','EP']]
+X = df[['Pclass','Age','SibSp','Sex','Parch','Fare','Embarked','Family Size']]
 y = df['Survived']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=44)
 clf = DecisionTreeClassifier(random_state=34)
@@ -86,10 +92,11 @@ y_pred = clf.predict(X_test)
 accuracy = clf.score(X_test, y_test)
 print(f'Accuracy: {accuracy:.2f}')
 Accuracy: 0.70
+
 from sklearn.ensemble import RandomForestClassifier
-X = df[['Pclass', 'Age', 'SibSp', 'Sex', 'Parch', 'Fare', 'Embarked','Family Size','EmFam','EmFamMi','PcEmb','PcEmbMi','PcEmbMu','EP']]
+X = df[['Pclass', 'Age', 'SibSp', 'Sex', 'Parch', 'Fare', 'Embarked','Family Size']]
 y = df['Survived']
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=44)
 rf_clf = RandomForestClassifier(n_estimators=100, random_state=42)
 rf_clf.fit(X_train, y_train)
 y_pred = rf_clf.predict(X_test)
